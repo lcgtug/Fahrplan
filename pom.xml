@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ibe</groupId>
+    <artifactId>ibe-call</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>IBE Call Test</name>
+    <packaging>jar</packaging>
+
+    <description>
+        Aufruf von mehreren IBEs
+    </description>
+
+    <licenses>
+        <license>
+            <name>Proprietary and exclusive Licence</name>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>FaKod</id>
+            <name>Christopher Schmidt</name>
+            <timezone>+1</timezone>
+            <email>info [at] FaKod.EU</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+
+    <repositories>
+
+        <!-- AKKA Stuff -->
+        <repository>
+            <id>Akka</id>
+            <name>Akka Maven2 Repository</name>
+            <url>http://akka.io/repository/</url>
+        </repository>
+
+        <repository>
+            <id>Multiverse</id>
+            <name>Multiverse Maven2 Repository</name>
+            <url>http://multiverse.googlecode.com/svn/maven-repository/releases/</url>
+        </repository>
+
+        <!--repository>
+            <id>GuiceyFruit</id>
+            <name>GuiceyFruit Maven2 Repository</name>
+            <url>http://guiceyfruit.googlecode.com/svn/repo/releases/</url>
+        </repository>
+
+        <repository>
+            <id>JBoss</id>
+            <name>JBoss Maven2 Repository</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository-->
+        <repository>
+            <id>scala-tools.org</id>
+            <name>releases</name>
+            <url>http://scala-tools.org/repo-releases</url>
+        </repository>
+        <!--repository>
+            <id>scala-tools.org</id>
+            <name>snapshots</name>
+            <url>http://scala-tools.org/repo-snapshots</url>
+        </repository-->
+        <repository>
+            <id>central</id>
+            <name>Maven repository</name>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+            <id>ObjectWeb</id>
+            <name>ObjectWeb repository</name>
+            <url>http://maven.ow2.org/maven2</url>
+        </repository>
+
+    </repositories>
+
+    <dependencies>
+        <!-- Akka Stuff -->
+        <dependency>
+            <groupId>se.scalablesolutions.akka</groupId>
+            <artifactId>akka-actor</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>se.scalablesolutions.akka</groupId>
+            <artifactId>akka-util</artifactId>
+            <version>0.6</version>
+        </dependency>
+        <!--dependency>
+            <groupId>se.scalablesolutions.akka</groupId>
+            <artifactId>akka-http</artifactId>
+            <version>1.0</version>
+        </dependency-->
+
+        <!-- Scala stuff -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!--dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.9.0-1</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2-scalaz-core_2.9.0-1</artifactId>
+            <version>6.0.RC2</version>
+        </dependency-->
+
+        <!-- Java stuff -->
+        <!--dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.7</version>
+            <scope>test</scope>
+        </dependency-->
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.scala-tools</groupId>
+                    <artifactId>maven-scala-plugin</artifactId>
+                    <version>2.14</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.0.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.14</version>
+
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <!--include>**/QueryTest.java</include-->
+                        <!--include>**/ObjectItemStatusTest.java</include-->
+                        <include>**/ObjectItemAssociationTest.java</include>
+                    </includes>
+                </configuration>
+
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
