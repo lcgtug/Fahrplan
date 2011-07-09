@@ -4,14 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ibe</groupId>
-    <artifactId>ibe-call</artifactId>
+    <artifactId>Fahrplan</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>IBE Call Test</name>
+    <name>Fahrplan</name>
     <packaging>jar</packaging>
 
-    <description>
-        Aufruf von mehreren IBEs
-    </description>
 
     <licenses>
         <license>
@@ -83,7 +80,7 @@
 
     <dependencies>
         <!-- Akka Stuff -->
-        <dependency>
+        <!--dependency>
             <groupId>se.scalablesolutions.akka</groupId>
             <artifactId>akka-actor</artifactId>
             <version>1.1.3</version>
@@ -92,7 +89,7 @@
             <groupId>se.scalablesolutions.akka</groupId>
             <artifactId>akka-util</artifactId>
             <version>0.6</version>
-        </dependency>
+        </dependency-->
         <!--dependency>
             <groupId>se.scalablesolutions.akka</groupId>
             <artifactId>akka-http</artifactId>
