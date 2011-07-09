@@ -84,12 +84,12 @@
             <name>ObjectWeb repository</name>
             <url>http://maven.ow2.org/maven2</url>
         </repository>
-        
+
         <repository>
             <id>neo4j-public-repository</id>
             <url>http://m2.neo4j.org</url>
         </repository>
-        
+
         <repository>
             <id>osgeo</id>
             <name>Open Source Geospatial Foundation Repository</name>
@@ -213,10 +213,24 @@
         </dependency>
 
         <dependency>
-        	<groupId>org.neo4j</groupId>
-        	<artifactId>neo4j-graph-algo</artifactId>
-        	<version>1.3</version>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-graph-algo</artifactId>
+            <version>1.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.kxml</groupId>
+            <artifactId>kxml2</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+
     </dependencies>
     <build>
         <pluginManagement>

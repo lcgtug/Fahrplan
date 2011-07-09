@@ -21,6 +21,8 @@ object Main extends App with Neo4jWrapper with EmbeddedGraphDatabaseServiceProvi
     }
   })
 
+
+
   withTx {
     implicit neo =>
 
