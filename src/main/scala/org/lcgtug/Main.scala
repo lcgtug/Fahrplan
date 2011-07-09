@@ -1,8 +1,8 @@
 package org.lcgtug
 
 import org.neo4j.scala.{EmbeddedGraphDatabaseServiceProvider, Neo4jWrapper}
-import org.neo4j.graphdb.{Direction, DynamicRelationshipType}
 import java.text.SimpleDateFormat
+import org.neo4j.graphdb.{Relationship, Direction, DynamicRelationshipType}
 
 /**
  *
@@ -50,20 +50,30 @@ object Main extends App with Neo4jWrapper with EmbeddedGraphDatabaseServiceProvi
     val fn = createNode
     fn.setProperty("name", "Friedrichshafen")
 
-    val tettnang = createNode
-    tettnang.setProperty("name", "Tettnang")
+    val tt = createNode
+    tt.setProperty("name", "Tettnang")
 
     val rv = createNode
     rv.setProperty("name", "Ravensburg")
 
-    val ulm = createNode
-    ulm.setProperty("name", "Ulm")
+    val kn = createNode
+    kn.setProperty("name", "Konstanz")
 
     /**
      * connections
      */
-    val busFnUlm = fn --> bus --> ulm <
-    busFnUlm.setProperty("starttime", "09:20")
+    addConnection(fn --> bus --> tt <, "09:20", "00:17")
+    addConnection(fn --> ferry --> kn <, "10:10", "01:10")
+    addConnection(fn --> tram --> rv <, "10:30", "00:31")
+    addConnection(tt --> tram --> rv <, "12:10", "40:00")
+    addConnection(tt --> ferry --> kn <, "08:05", "02:15")
+    addConnection(rv --> tram --> kn <, "13:40", "03:47")
+
+  }
+
+  def addConnection(rel:Relationship, startTime:String, duration:String) = {
+    rel.setProperty("starttime", startTime)
+    rel.setProperty("duration", duration)
   }
 
 }
