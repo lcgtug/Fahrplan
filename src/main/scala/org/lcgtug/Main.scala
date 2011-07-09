@@ -2,7 +2,10 @@ package org.lcgtug
 
 import org.neo4j.scala.{EmbeddedGraphDatabaseServiceProvider, Neo4jWrapper}
 import java.text.SimpleDateFormat
-import org.neo4j.graphdb.{Relationship, Direction, DynamicRelationshipType}
+import org.neo4j.kernel.Traversal
+import org.neo4j.graphdb.{ReturnableEvaluator, Relationship, Direction, DynamicRelationshipType}
+import org.neo4j.graphalgo.{CommonEvaluators, GraphAlgoFactory}
+import collection.JavaConversions._
 
 /**
  *
@@ -71,11 +74,19 @@ object Main extends App with Neo4jWrapper with EmbeddedGraphDatabaseServiceProvi
     addConnection(tt --> ferry --> kn <, "08:05", "02:15")
     addConnection(rv --> tram --> kn <, "13:40", "03:47")
 
+    val dijkstra = GraphAlgoFactory.dijkstra(new CustomExpander(), new CustomEvaluator())
+    val path = dijkstra.findSinglePath(fn, kn)
+    println("length: " + path.length)
+    for (properties <- path.iterator()) {
+      println(" -> " + properties.getProperty("name"));
+    }
+
   }
 
-  def addConnection(rel:Relationship, startTime:String, duration:String) = {
+  def addConnection(rel: Relationship, startTime: String, duration: String) = {
     rel.setProperty("starttime", startTime)
     rel.setProperty("duration", duration)
+    rel.setProperty("name", "-> " +startTime  + "  " + duration)
   }
 
 }
