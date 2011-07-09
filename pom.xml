@@ -99,6 +99,45 @@
     </repositories>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-main</artifactId>
+            <version>${geotools.version}</version>
+            <!--scope>provided</scope-->
+            <exclusions>
+
+                <!--exclusion>
+              <groupId>com.vividsolutions</groupId>
+              <artifactId>jts</artifactId>
+              </exclusion-->
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-shapefile</artifactId>
+            <version>${geotools.version}</version>
+            <!--scope>provided</scope-->
+            <exclusions>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-render</artifactId>
+            <version>${geotools.version}</version>
+            <!--scope>provided</scope-->
+            <exclusions>
+
+                <!--exclusion>
+              <groupId>org.geotools</groupId>
+              <artifactId>gt-coverage</artifactId>
+              </exclusion-->
+                <exclusion>
+                    <groupId>it.geosolutions.imageio-ext</groupId>
+                    <artifactId>imageio-ext-tiff</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- Akka Stuff -->
         <!--dependency>
             <groupId>se.scalablesolutions.akka</groupId>
